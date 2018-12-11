@@ -1,12 +1,11 @@
 function Ship(){
     this.xpos = width/2;
-    this.shipWidth = 15;
-    this.shipHeight = 30;
-
+    this.shipHeight = height - 30;
+    this.shipWidth = 30;
 
     this.show = function(){
         fill(255);
-        rect(this.xpos, height - this.shipHeight - 3, this.shipWidth, this.shipHeight);
+        triangle(this.xpos - 15, height, this.xpos, this.shipHeight, this.xpos - 15  + this.shipWidth, height);
     }
 
     this.move = function(d){

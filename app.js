@@ -1,7 +1,7 @@
 var myShip;
 var clip = [];
 var horde = [];
-var horde_size = 5;
+var horde_size = 6;
 
 function setup(){
     createCanvas(600, 600);
@@ -14,7 +14,9 @@ function setup(){
 }
 
 function draw(){
+
     background(51);
+
     myShip.show();
     
     for(let i=0; i<horde_size; i++){
@@ -25,6 +27,12 @@ function draw(){
     for(let i=0; i<clip.length; i++){
         clip[i].show();
         clip[i].move();
+        for(let j=0; j<horde.length; j++){
+            if(clip[i].hit(horde[j])){
+                horde[j].die();
+                horde[j].explode();
+            }
+        }
     }
 
     if(keyIsDown(LEFT_ARROW)){
@@ -38,8 +46,7 @@ function draw(){
 
 function keyPressed(){
     if(keyCode === UP_ARROW){
-        let missile = new Missile();
-        clip.push(missile);
+        let buster = new Buster();
+        clip.push(buster);
     }
-    console.log(clip);
 }
