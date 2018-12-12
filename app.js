@@ -1,10 +1,11 @@
 var myShip;
 var clip = [];
 var horde = [];
-var horde_size = 6;
+var horde_size = 12;
+
 
 function setup(){
-    createCanvas(600, 600);
+    createCanvas(1200, 600);
     myShip = new Ship();
 
     for(let i=0; i<horde_size; i++){
@@ -16,10 +17,9 @@ function setup(){
 function draw(){
 
     background(51);
-
+    fill(255);
     myShip.show();
-    
-    for(let i=0; i<horde_size; i++){
+    for(let i=0; i<horde.length; i++){
         horde[i].show();
         horde[i].move();
     }
@@ -31,6 +31,8 @@ function draw(){
             if(clip[i].hit(horde[j])){
                 horde[j].die();
                 horde[j].explode();
+                horde.pop();
+                console.log(horde);
             }
         }
     }

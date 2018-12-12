@@ -4,7 +4,7 @@ function Ship(){
     this.shipWidth = 30;
 
     this.show = function(){
-        fill(255);
+        fill(0, 80, 255);
         triangle(this.xpos - 15, height, this.xpos, this.shipHeight, this.xpos - 15  + this.shipWidth, height);
     }
 
@@ -22,5 +22,10 @@ function Ship(){
                 this.xpos = this.xpos + 10;
             }        
         }
+    }
+
+    this.die = function(){
+        this.shipHeight = 0;
+        
     }
 }
