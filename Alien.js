@@ -6,7 +6,7 @@ function Alien(x){
     this.color2 = floor(random(100, 255));
     this.color3 = floor(random(100, 255));
 
-    this.speed = 5;
+    this.speed = 14;
 
     this.move = function(){
         if(this.xpos >= width || this.xpos <= 0){
@@ -22,6 +22,16 @@ function Alien(x){
         ellipse(this.xpos, this.ypos, this.w, 16);
     }
 
+    this.invade = function(){
+        let d = dist(this.xpos, this.ypos, myShip.xpos, myShip.shipHeight + 15);
+
+        if(d < (this.w/2) + (myShip.shipWidth/2)){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     this.die = function(){
         this.w = 0;
     }
@@ -34,5 +44,6 @@ function Alien(x){
         strokeWeight(2);
         line(this.xpos, this.ypos - 10, this.xpos, this.ypos + 10);
         line(this.xpos - 10, this.ypos, this.xpos + 10, this.ypos);
+        this.xpos = -50;
     }
 }
